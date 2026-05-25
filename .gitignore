@@ -6,8 +6,12 @@ __pycache__/
 # Data and Models
 data/
 output/
+checkpoints/
 *.pt
 *.pth
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
 
 # Environments
 .env

@@ -5,9 +5,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torchvision
-from matplotlib.patches import bbox_artist
 
-from pyimagesearch import config
+from VAE.pyimagesearch import config
 
 matplotlib.use("agg")
 import matplotlib.cm as cm

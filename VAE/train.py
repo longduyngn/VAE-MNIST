@@ -10,7 +10,6 @@ from pyimagesearch import config, network, utils
 from torchvision import datasets, transforms
 import torch.optim as optim
 import torch
-import os
 
 import matplotlib
 
@@ -54,7 +53,7 @@ decoder = network.Decoder(config.EMBEDDING_DIM, config.SHAPE_BEFORE_FLATTENING).
 
 
 #pass to VAE
-vae = network.VAE(encoder,decoder)
+vae = network.VAE(encoder, decoder)
 
 #optimizer
 optimizer = optim.Adam(
