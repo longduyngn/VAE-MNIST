@@ -378,7 +378,7 @@ def plot_normally_sampled_reconstructions(decoder, grid_size=15, figsize=8, show
         plt.savefig(config.NORMALLY_SAMPLED_RECONSTRUCTIONS_PLOT, bbox_inches="tight")
         plt.close()
 
-
+#plot histogram phân phối các điểm trong data set khi được map vào latent
 def plot_latent_space_histogram(test_loader, encoder, show=False):
     points, _ = get_test_embeddings(test_loader, encoder)
     num_dims = points.shape[1]
@@ -410,8 +410,7 @@ def plot_latent_space_histogram(test_loader, encoder, show=False):
         plt.close()
 
 
-
-
+#vẽ hàm loss
 def plot_loss(train_losses, val_losses, filename=None, show=False):
     plt.figure(figsize=(10, 6), dpi=150)
     
@@ -443,6 +442,7 @@ def plot_loss(train_losses, val_losses, filename=None, show=False):
         plt.close()
 
 
+#random z và cho qua decoder
 def random_generating_images(decoder, num_images=32, num_images_per_row=8, filename=None, noise_filename=None, show=True):
     decoder.eval()
     # Sample z from standard normal distribution
@@ -514,15 +514,19 @@ def random_generating_images(decoder, num_images=32, num_images_per_row=8, filen
             plt.close()
 
 
+#KL loss
 def vae_gaussian_kl_loss(mu, logvar):
     KLD = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp(), dim=1)
     return KLD.mean()
 
 
+#reconstruction loss
 def reconstruction_loss(x_reconstructed, x):
     bce_loss = nn.BCELoss()
     return bce_loss(x_reconstructed, x)
 
+
+#total loss
 def vae_loss(y_pred, y_true):
     mu, logvar, recon_x = y_pred
     recon_loss = reconstruction_loss(recon_x, y_true)
